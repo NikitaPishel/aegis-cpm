@@ -1,22 +1,36 @@
+### Internal defintions
+$$
+a = \frac{x}{L}
+$$
+
+### Distributed force
+$$
+F_d(x) = F_i \sin(\pi a)
+$$
+
 ### Shear force:
 $$
-F_b(a) = F_i \sin(\pi a)
+F_b(x) = \int F_d(x)\, dx
+$$
+$$
+F_s(x) = \frac{FL}{\pi} \cos(\frac{\pi x}{L})
 $$
 
 ### Bending moment:
 $$
-M_b = \int F_b(x)\, dx
+F_b(x) = \int\int F_d(x)\, dx
 $$
-
 $$
-M_b = \frac{F_i L}{\pi}  \big(1  -  \cos(\frac{\pi x}{L}))
+F_b(x) = \int F_s(x)\, dx
+$$
+$$
+F_b(x) = \frac{FL^2}{\pi^2} \cos(\frac{\pi x}{L})
 $$
 
 ### Force on joints:
 $$
-F_{j1} = F_i (1-a)
+F_{j1}(x) = F(1-a)
 $$
-
 $$
-F_{j2} = F_i a
+F_{j2}(x) = Fa
 $$
