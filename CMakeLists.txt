@@ -18,6 +18,16 @@ FetchContent_Declare(
 
 FetchContent_MakeAvailable(ngph)
 
+# Fetch json i/o library
+FetchContent_Declare(
+    nlohmann_json
+    GIT_REPOSITORY https://github.com/nlohmann/json.git
+    GIT_TAG v3.12.0
+)
+
+FetchContent_MakeAvailable(nlohmann_json)
+
+target_link_libraries(aegis_lib PUBLIC nlohmann_json::nlohmann_json)
 target_link_libraries(aegis_lib PUBLIC ngph)
 target_link_libraries(aegis-cpm PRIVATE aegis_lib)
 
