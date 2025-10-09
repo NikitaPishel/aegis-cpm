@@ -2,6 +2,7 @@
 #include <stdexcept>
 #include "cpm/actionStore.h"
 #include "cpm/action.h"
+#include "iokey.h"
 
 namespace cpm {
     // Singleton getter
@@ -11,25 +12,50 @@ namespace cpm {
     }
 
     // Actions store i/o
-    void ActionStore::setAction(const std::string& name, Action* action) {
-        this->actions[name] = std::unique_ptr<Action>(action);
+    void ActionStore::setAction(const char& bind, Action* action) {
+        this->actions[bind] = std::unique_ptr<Action>(action);
     }
 
-    void ActionStore::setAction(const std::string& name, std::unique_ptr<Action> action) {
-        this->actions[name] = std::move(action);
+    void ActionStore::setAction(const char& bind, std::unique_ptr<Action> action) {
+        this->actions[bind] = std::move(action);
     }
 
-    void ActionStore::delAction(const std::string& name) {
-        this->actions.erase(name);
+    void ActionStore::delAction(const char& bind) {
+        this->actions.erase(bind);
     }
 
-    std::unique_ptr<Action> ActionStore::getAction(const std::string& name) {
-        auto it = this->actions.find(name);
+    Action& ActionStore::getAction(const char& bind) {
+        auto it = this->actions.find(bind);
 
         if (it == this->actions.end()) {
-            throw std::runtime_error("Tool not found: " + name);
+            throw std::runtime_error("Tool not found: " + bind);
         }
 
-        return it->second->clone();
+        return *it->second;
+    }
+
+    Action* ActionStore::getActionPtr(const char& bind) {
+        auto it = this->actions.find(bind);
+
+        if (it == this->actions.end()) {
+            return nullptr;
+        }
+
+        return it->second.get();
+    }
+
+    void ActionStore::runAction(const char& bind) {
+        this->getAction(bind).apply();
+    }
+
+    void ActionStore::autoRunAction() {
+        IoKey& _ioKey = IoKey::getInstance();
+        const char& key = _ioKey.getChar();
+        
+        Action* _action = this->getActionPtr(key);
+
+        if (_action != nullptr) {
+            _action->apply();
+        }
     }
 }

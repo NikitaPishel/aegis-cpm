@@ -9,17 +9,22 @@ namespace cpm {
     class ActionStore {
     private:
         // global map of actions
-        std::unordered_map<std::string, std::unique_ptr<Action>> actions;
+        std::unordered_map<char, std::unique_ptr<Action>> actions;
     
+        Action& getAction(const char& bind);
+        Action* getActionPtr(const char& bind);
+
     public:
         // Singleton instance method
         static ActionStore& getInstance();
 
         // Actions i/o
-        std::unique_ptr<Action> getAction(const std::string& name);
-        void setAction(const std::string& name, Action* action);
-        void setAction(const std::string& name, std::unique_ptr<Action> action);
-        void delAction(const std::string& name);
+        void setAction(const char& bind, Action* action);
+        void setAction(const char& bind, std::unique_ptr<Action> action);
+        void delAction(const char& bind);
+
+        void runAction(const char& bind);
+        void autoRunAction();
     };
 }
 #endif
