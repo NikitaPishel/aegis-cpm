@@ -7,8 +7,8 @@
 
 namespace cpm {
     struct ActionReg {
-            ActionReg(const std::string& name, Action* tool);
-            ActionReg(const std::string& name, std::unique_ptr<Action> tool);
+            ActionReg(const char& bind, Action* tool);
+            ActionReg(const char& bind, std::unique_ptr<Action> tool);
     };
 }
 
