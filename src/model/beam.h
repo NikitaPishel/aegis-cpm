@@ -2,6 +2,7 @@
 #define MODEL_JOINT_H
 
 #include <cstdint>
+#include <vector>
 
 namespace cpm {
     // Forward declaration
@@ -12,13 +13,21 @@ namespace cpm {
         // length of the beam
         uint16_t length;
 
-        // beam thickness
+        // beam cross-section size
         uint8_t width;
-        uint8_t heigth;
+        uint8_t height;
 
-        Joint* origin;
+        uint16_t cSectnArea;
+        uint16_t fMomntArea;
+        uint16_t sMomntArea;
 
-        Beam();
+        // Origin joint of a structure
+        Joint* originJoint;
+
+        // joints that are connected to a beam
+        std::vector<Joint*> joints;
+
+        Beam(Joint& originJoint, int length, int width, int height);
     };
 }
 

@@ -2,14 +2,22 @@
 #define MODEL_JOINT_H
 
 #include <cstdint>
+#include <vector>
 
 namespace cpm {
+    class Beam;
+    
     class Joint {
-    public:
-        // point relatively to the beam connection
-        uint16_t pos;    
+    private:
+        // position of a 
+        const uint16_t xPos;
+        const uint16_t yPos;
 
-        Joint();
+    public:
+        Joint(int xPos, int yPos);
+
+        // Beams that cross that joint
+        std::vector<Beam*> beams;
     };
 }
 
