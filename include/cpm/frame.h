@@ -9,8 +9,12 @@ namespace cpm {
         // Internal implementation of the Frame class
         class Impl;
         std::unique_ptr<Impl> pImpl;
+
     public:
         Frame();
+
+        void addJoint();
+        void addBeam();
     };
 }
 
