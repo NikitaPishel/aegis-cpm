@@ -2,6 +2,7 @@
 #define MODEL_FRAME_H
 
 #include <memory>
+#include "cpm/frameMap.h"
 
 namespace cpm {
     class Frame {
@@ -13,8 +14,18 @@ namespace cpm {
     public:
         Frame();
 
-        void addJoint();
-        void addBeam();
+        void addJoint(double xPos = 0, double yPos = 0);
+        void addBeam(
+            int originIndex = 0,
+            double length = 1,
+            double width = 1,
+            double height = 1,
+            double viscosity = 1
+        );
+        
+        FrameMap getShearMap();
+        FrameMap getBendingMomentMap();
+        FrameMap getLoadMap();
     };
 }
 

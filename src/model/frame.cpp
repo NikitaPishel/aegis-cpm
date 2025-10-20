@@ -16,11 +16,31 @@ namespace cpm {
 
     Frame::Frame() : pImpl(std::make_unique<Impl>()) {};
     
-    void Frame::addJoint() {
+    void Frame::addJoint(double xPos, double yPos) {
+        pImpl->joints.push_back(Joint(xPos, yPos));
+    }
+
+    void Frame::addBeam(
+        int originIndex = 0,
+        double length = 1,
+        double width = 1,
+        double height = 1,
+        double viscosity = 1
+    ) {
+        Joint* originPtr = &pImpl->joints[originIndex];
+        
+        pImpl->beams.push_back(Beam(originPtr, length, width, height, viscosity));
+    }
+
+    FrameMap Frame::getShearMap() {
+
+    };
+
+    FrameMap Frame::getBendingMomentMap() {
 
     }
 
-    void Frame::addBeam() {
+    FrameMap Frame::getLoadMap() {
         
     }
 }
