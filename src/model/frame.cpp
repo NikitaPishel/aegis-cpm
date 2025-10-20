@@ -21,11 +21,11 @@ namespace cpm {
     }
 
     void Frame::addBeam(
-        int originIndex = 0,
-        double length = 1,
-        double width = 1,
-        double height = 1,
-        double viscosity = 1
+        int originIndex,
+        double length,
+        double width,
+        double height,
+        double viscosity
     ) {
         Joint* originPtr = &pImpl->joints[originIndex];
         
