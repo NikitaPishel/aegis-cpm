@@ -1,7 +1,7 @@
 #include "joint.h"
 
 namespace cpm {
-    Joint::Joint(int xPos, int yPos) :
+    Joint::Joint(double xPos, double yPos) :
         xPos(xPos),
         yPos(yPos) {}
 }

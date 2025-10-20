@@ -2,7 +2,7 @@
 #include <stdexcept>
 #include "cpm/actionStore.h"
 #include "cpm/action.h"
-#include "iokey.h"
+#include "cpm/iokey.h"
 
 namespace cpm {
     // Singleton getter

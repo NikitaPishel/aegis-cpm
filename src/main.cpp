@@ -4,7 +4,7 @@
 
 bool appUp = true;
 
-bool checkAppStatus() {
+void checkAppStatus() {
     if (cpm::IoKey::getInstance().getChar() == 'q') {
         appUp = false;
     }

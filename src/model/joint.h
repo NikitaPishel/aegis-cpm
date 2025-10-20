@@ -10,11 +10,11 @@ namespace cpm {
     class Joint {
     private:
         // position of a 
-        const uint16_t xPos;
-        const uint16_t yPos;
+        const double xPos;
+        const double yPos;
 
     public:
-        Joint(int xPos, int yPos);
+        Joint(double xPos = 0, double yPos = 0);
 
         // Beams that cross that joint
         std::vector<Beam*> beams;

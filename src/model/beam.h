@@ -1,5 +1,5 @@
-#ifndef MODEL_JOINT_H
-#define MODEL_JOINT_H
+#ifndef MODEL_BEAM_H
+#define MODEL_BEAM_H
 
 #include <cstdint>
 #include <vector>
@@ -9,25 +9,45 @@ namespace cpm {
     class Joint;
     
     class Beam {
+    private:
+        double getDistributedLoads();
+
+        double getShearForce(double pos, double force);
+        double getBendingMoment(double pos, double force);
+    
+        double getTotalShearForce(double pos);
+        double getTotalBendingMoment(double pos);
+
     public:
         // length of the beam
-        uint16_t length;
+        double length;
 
         // beam cross-section size
-        uint8_t width;
-        uint8_t height;
+        double width;
+        double height;
 
-        uint16_t cSectnArea;
-        uint16_t fMomntArea;
-        uint16_t sMomntArea;
+        double cSectnArea;
+        double fMomntArea;
+        double sMomntArea;
+
+        // Vertical forces
+        double weight;
+
+        std::vector<double> distributed;
 
         // Origin joint of a structure
-        Joint* originJoint;
+        Joint* originPtr;
 
         // joints that are connected to a beam
         std::vector<Joint*> joints;
 
-        Beam(Joint& originJoint, int length, int width, int height);
+        Beam(
+            Joint* originPtr = nullptr,
+            double length = 1,
+            double width = 1,
+            double height = 1,
+            double viscosity = 1
+        );
     };
 }
 
