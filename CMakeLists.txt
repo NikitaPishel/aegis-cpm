@@ -29,7 +29,6 @@ FetchContent_MakeAvailable(nlohmann_json)
 
 target_link_libraries(aegis_lib PUBLIC nlohmann_json::nlohmann_json)
 target_link_libraries(aegis_lib PUBLIC ngph)
-target_link_libraries(aegis-cpm PRIVATE aegis_lib)
 
 # Option to enable tests (ON by default)
 set(AEGIS_BUILD_TESTS ON CACHE BOOL "Build unit tests" FORCE)
