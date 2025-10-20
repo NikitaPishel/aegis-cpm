@@ -1,7 +1,8 @@
 #include <termios.h>
 #include <cstdio>
 #include <unistd.h>
-#include "iokey.h"
+#include <sys/select.h>
+#include "cpm/iokey.h"
 
 namespace cpm {
     class IoKey::Impl {
@@ -37,11 +38,36 @@ namespace cpm {
         return instance;
     }
 
+    bool IoKey::keyPressed() {
+        timeval tv = {0, 0};
+        fd_set fds;
+        FD_ZERO(&fds);
+        FD_SET(STDIN_FILENO, &fds);
+        
+        return select(STDIN_FILENO + 1, &fds, nullptr, nullptr, &tv) > 0;
+    }
+
     int IoKey::getCharInt() {
-    return std::getchar();
+        if (!this->captured) {
+            if (keyPressed()) {
+                this->buffer = std::getchar();
+            }
+
+            else {
+                this->buffer = 0;
+            }
+
+            this->captured = true;
+        }
+
+        return this->buffer;
     }
 
     char IoKey::getChar() {
     return static_cast<char>(getCharInt());
+    }
+
+    void IoKey::resetCapture() {
+        this->captured = false;
     }
 }
