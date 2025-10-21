@@ -17,6 +17,9 @@ namespace cpm {
 
         void setValue(int xPos, int yPos, double value);
         double getValue(int xPos, int yPos);
+
+        int getXSize() const;
+        int getYSize() const;
     };
 }
 

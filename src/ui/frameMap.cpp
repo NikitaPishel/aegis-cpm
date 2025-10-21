@@ -3,7 +3,7 @@
 
 namespace cpm {
     FrameMap::FrameMap(int xSize, int ySize) : xSize(xSize), ySize(ySize), matrixSize(xSize * ySize) {
-        matrix = new double[xSize * ySize];
+        matrix = new double[xSize * ySize]{0.0};
     }
 
     FrameMap::~FrameMap() {
@@ -18,7 +18,6 @@ namespace cpm {
         
         int index = (yPos * xSize) + xPos;
         
-        
         matrix[index] = value;
     }
     
@@ -30,5 +29,13 @@ namespace cpm {
         int index = (yPos * xSize) + xPos;
 
         return matrix[index];
+    }
+
+    int FrameMap::getXSize() const {
+        return this->xSize;
+    }
+
+    int FrameMap::getYSize() const {
+        return this->ySize;
     }
 }
