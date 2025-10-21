@@ -45,4 +45,11 @@ namespace cpm {
 
             return totalMoment;
         }
+
+        double Beam::getTotalLoad(double pos) {
+            double totalShear = this->getTotalShearForce(pos);
+            double totalMoment = this->getTotalBendingMoment(pos);
+            
+            return 0.0;
+        }
 }

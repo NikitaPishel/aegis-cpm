@@ -14,9 +14,6 @@ namespace cpm {
 
         double getShearForce(double pos, double force);
         double getBendingMoment(double pos, double force);
-    
-        double getTotalShearForce(double pos);
-        double getTotalBendingMoment(double pos);
 
     public:
         // length of the beam
@@ -48,6 +45,10 @@ namespace cpm {
             double height = 1,
             double viscosity = 1
         );
+
+        double getTotalShearForce(double pos);
+        double getTotalBendingMoment(double pos);
+        double getTotalLoad(double pos);
     };
 }
 

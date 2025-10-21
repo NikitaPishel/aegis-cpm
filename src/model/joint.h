@@ -8,12 +8,11 @@ namespace cpm {
     class Beam;
     
     class Joint {
-    private:
-        // position of a 
+    public:
+        // position of an origin
         const double xPos;
         const double yPos;
 
-    public:
         Joint(double xPos = 0, double yPos = 0);
 
         // Beams that cross that joint
