@@ -11,5 +11,9 @@ namespace {
         MaterialStore::registerMaterial("base.steel.S235", steelS235);
         MaterialStore::registerMaterial("base.alluminum", alluminum);
         MaterialStore::registerMaterial("base.wood.oak", woodOak);
+
+        return 0;
     }
+
+    static int materialInit = registerMaterials();
 }

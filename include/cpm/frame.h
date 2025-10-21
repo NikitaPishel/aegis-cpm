@@ -3,6 +3,7 @@
 
 #include <memory>
 #include "cpm/frameMap.h"
+#include "cpm/materialStore.h"
 
 namespace cpm {
     class Frame {

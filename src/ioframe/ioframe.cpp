@@ -1,6 +1,7 @@
 #include "cpm/ioframe.h"
 #include "cpm/frame.h"
 #include "cpm/materialStore.h"
+#include "cpm/material.h"
 
 namespace cpm {
     JsonFrame::JsonFrame() : framePtr(nullptr) {}
