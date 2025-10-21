@@ -20,7 +20,7 @@ namespace cpm {
             double length = 1,
             double width = 1,
             double height = 1,
-            double viscosity = 1
+            Material material = MaterialStore::getInstance().getMaterial("base.iron")
         );
         
         FrameMap getPosMap();

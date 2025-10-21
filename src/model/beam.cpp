@@ -3,17 +3,18 @@
 #include "joint.h"
 
 namespace cpm {
-    Beam::Beam(Joint* originPtr, double length, double width, double height, double viscosity) :
+    Beam::Beam(Joint* originPtr, double length, double width, double height, Material material) :
         originPtr(originPtr),
         length(length),
         width(width),
-        height(height)
+        height(height),
+        material(material)
         {
             // find cross sectional area
             cSectnArea = width * height;
 
             // find weight of a beam
-            weight = viscosity * cSectnArea * length;
+            weight = material.density * cSectnArea * length;
         }
 
         double Beam::getShearForce(double pos, double force) {

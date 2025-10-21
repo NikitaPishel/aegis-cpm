@@ -3,6 +3,7 @@
 
 #include <cstdint>
 #include <vector>
+#include "cpm/materialStore.h"
 
 namespace cpm {
     // Forward declaration
@@ -30,6 +31,8 @@ namespace cpm {
         // Vertical forces
         double weight;
 
+        Material material;
+
         std::vector<double> distributed;
 
         // Origin joint of a structure
@@ -43,7 +46,7 @@ namespace cpm {
             double length = 1,
             double width = 1,
             double height = 1,
-            double viscosity = 1
+            Material material = MaterialStore::getInstance().getMaterial("base.iron")
         );
 
         double getTotalShearForce(double pos);

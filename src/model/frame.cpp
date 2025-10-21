@@ -75,11 +75,11 @@ namespace cpm {
         double length,
         double width,
         double height,
-        double viscosity
+        Material material
     ) {
         Joint* originPtr = &pImpl->joints[originIndex];
         
-        pImpl->beams.push_back(Beam(originPtr, length, width, height, viscosity));
+        pImpl->beams.push_back(Beam(originPtr, length, width, height, material));
     }
 
     FrameMap Frame::getPosMap() {
