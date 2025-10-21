@@ -12,11 +12,13 @@ namespace cpm {
     private:
         Frame* framePtr;
 
-        void write(const std::string& filename, const nlohmann::json& j) const;
-        nlohmann::json read(const std::string& filename) const;
+        void write(const std::string& path, const nlohmann::json& j) const;
+        nlohmann::json read(const std::string& path) const;
     
     public:
         JsonFrame();
+
+        void loadFrame(const std::string& path);
 
         void linkFrame(Frame& frame);
     };
