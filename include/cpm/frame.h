@@ -23,6 +23,7 @@ namespace cpm {
             double viscosity = 1
         );
         
+        FrameMap getPosMap();
         FrameMap getShearMap();
         FrameMap getBendingMomentMap();
         FrameMap getLoadMap();
