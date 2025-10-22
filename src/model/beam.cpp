@@ -3,7 +3,14 @@
 #include "joint.h"
 
 namespace cpm {
-    Beam::Beam(Joint* originPtr, double length, double width, double height, Material material) :
+    Beam::Beam(
+        Joint* originPtr,
+        double length,
+        double width,
+        double height,
+        Material material,
+        double safetyFactor
+        ) :
         originPtr(originPtr),
         length(length),
         width(width),
@@ -15,6 +22,8 @@ namespace cpm {
 
             // find weight of a beam
             weight = material.density * cSectnArea * length;
+
+            stressAllowed = material.yieldStrength * safetyFactor;
         }
 
         double Beam::getShearForce(double pos, double force) {
@@ -52,5 +61,9 @@ namespace cpm {
             double totalMoment = this->getTotalBendingMoment(pos);
             
             return 0.0;
+        }
+
+        double Beam::getTotalLoadPercentage(double pos) {
+            return getTotalLoad(pos) / stressAllowed;
         }
 }

@@ -13,7 +13,8 @@ namespace cpm {
         std::unique_ptr<Impl> pImpl;
 
     public:
-        Frame();
+        Frame(double safetyFactor);
+        ~Frame();
 
         void addJoint(double xPos = 0, double yPos = 0);
         void addBeam(

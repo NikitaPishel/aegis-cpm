@@ -18,21 +18,27 @@ namespace cpm {
 
         BeamBuilder(Beam beam) {
             // flip orientation to make map horizontal
-            int xStart = std::floor(beam.originPtr->yPos * 2.0);
-            int yStart = std::floor(beam.originPtr->xPos);
+            xStart = std::floor(beam.originPtr->yPos * 2.0);
+            yStart = std::floor(beam.originPtr->xPos);
 
-            int xSize = std::floor(beam.length * 2.0);
-            int ySize = std::floor(beam.width);
+            xSize = std::floor(beam.length * 2.0);
+            ySize = std::floor(beam.width);
+
+            if (ySize == 0) {
+                ySize = 1;
+            }
         };
     };
 
     class Frame::Impl {
     public:
-        Impl() {};
+        Impl(double safetyFactor) : safetyFactor(safetyFactor) {};
         
         // owns all joints and beams
         std::vector<Joint> joints;
         std::vector<Beam> beams;
+
+        double safetyFactor;
 
         FrameMap getEmptyMap();
     };
@@ -64,7 +70,9 @@ namespace cpm {
         return FrameMap(xSize, ySize);
     }
 
-    Frame::Frame() : pImpl(std::make_unique<Impl>()) {};
+    Frame::Frame(double safetyFactor) : pImpl(std::make_unique<Impl>(safetyFactor)) {};
+
+    Frame::~Frame() {}
     
     void Frame::addJoint(double xPos, double yPos) {
         pImpl->joints.push_back(Joint(xPos, yPos));
@@ -160,7 +168,7 @@ namespace cpm {
                     
                     if (xPos >= 0 && xPos < posMap.getXSize() && yPos >= 0 && yPos < posMap.getYSize()) {
                         double physPos = yShift / 2;
-                        posMap.setValue(xPos, yPos, pImpl->beams[i].getTotalLoad(physPos));
+                        posMap.setValue(xPos, yPos, pImpl->beams[i].getTotalLoadPercentage(physPos));
                     }
                 }
             }

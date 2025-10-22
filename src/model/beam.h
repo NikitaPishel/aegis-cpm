@@ -32,6 +32,7 @@ namespace cpm {
         double weight;
 
         Material material;
+        double stressAllowed;
 
         std::vector<double> distributed;
 
@@ -46,12 +47,14 @@ namespace cpm {
             double length = 1,
             double width = 1,
             double height = 1,
-            Material material = MaterialStore::getInstance().getMaterial("base.iron")
+            Material material = MaterialStore::getInstance().getMaterial("base.iron"),
+            double safetyFactor = 1
         );
 
         double getTotalShearForce(double pos);
         double getTotalBendingMoment(double pos);
         double getTotalLoad(double pos);
+        double getTotalLoadPercentage(double pos);
     };
 }
 
