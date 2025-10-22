@@ -9,8 +9,8 @@ using namespace gph;
 namespace cpm {
     Graphics::GradColor::GradColor(std::string color, double bottom, double top) : color(color), bottom(bottom), top(top) {}
     
-    Graphics::Graphics(Frame* fPtr) :
-    fPtr(fPtr),
+    Graphics::Graphics() :
+    fPtr(nullptr),
     colorTable{
         GradColor("bRed", 1, 1e6),
         GradColor("red", 0.75, 1),
@@ -24,6 +24,10 @@ namespace cpm {
     }
     {
 
+    }
+    
+    void Graphics::linkFrame(Frame* fPtr) {
+        this->fPtr = fPtr;
     }
 
     std::string Graphics::getColorByGradient(double gradient) {

@@ -36,8 +36,9 @@ namespace cpm {
         void renderImage();
 
     public:
-        Graphics(Frame* fPtr);
+        Graphics();
 
+        void linkFrame(Frame* fPtr);
         void handleImage();
     };
 }
