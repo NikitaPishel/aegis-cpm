@@ -7,6 +7,7 @@ namespace cpm {
         int xSize;
         int ySize;
         int matrixSize;
+        double maxMagnitude;
     
         // Pointer to data in a frame
         double* matrix;
@@ -16,7 +17,8 @@ namespace cpm {
         ~FrameMap();
 
         void setValue(int xPos, int yPos, double value);
-        double getValue(int xPos, int yPos);
+        double getValue(int xPos, int yPos) const;
+        double getMaxMagnitude() const;
 
         int getXSize() const;
         int getYSize() const;

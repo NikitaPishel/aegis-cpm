@@ -19,9 +19,15 @@ namespace cpm {
         int index = (yPos * xSize) + xPos;
         
         matrix[index] = value;
+
+        // update max magnitude
+        double magnitude = abs(value);
+        if (magnitude > maxMagnitude) {
+            maxMagnitude = magnitude;
+        }
     }
     
-    double FrameMap::getValue(int xPos, int yPos) {
+    double FrameMap::getValue(int xPos, int yPos) const {
         if (xPos < 0 || xPos >= xSize || yPos < 0 || yPos >= ySize) {
             throw std::out_of_range("FrameMap coordinates out of range in getValue");
         }
@@ -29,6 +35,10 @@ namespace cpm {
         int index = (yPos * xSize) + xPos;
 
         return matrix[index];
+    }
+
+    double FrameMap::getMaxMagnitude() const {
+        return maxMagnitude;
     }
 
     int FrameMap::getXSize() const {
