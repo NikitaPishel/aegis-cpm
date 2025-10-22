@@ -3,6 +3,8 @@
 
 #include <ngph/canvas.h>
 #include <ngph/texture.h>
+#include "cpm/frame.h"
+#include "cpm/frameMap.h"
 #include "texpack.h"
 
 namespace cpm {
@@ -17,6 +19,9 @@ namespace cpm {
             
             GradColor(std::string color = "", double bottom = 0, double top = 1);
         };
+
+        // frame pointer, used for rendering frame
+        Frame* fPtr;
     
         TexPack texpack;
         gph::Canvas canvas;
@@ -28,10 +33,12 @@ namespace cpm {
         gph::Texture texturizeNormalMap(const FrameMap& map);
         gph::Texture texturizeGradientMap(const FrameMap& map);
 
-    public:
-        Graphics();
-
         void renderImage();
+
+    public:
+        Graphics(Frame* fPtr);
+
+        void handleImage();
     };
 }
 

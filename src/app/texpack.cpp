@@ -10,7 +10,7 @@ namespace cpm {
         .setPixel(0, 0, ' ', "black", "yellow")
         .build();
         
-        exitLabel = gph::Texture::Builder(1, 1)
+        exitLabel = gph::Texture::Builder(13, 1)
             .fillTexture(' ', "black", "yellow")
             .setPixel(0, 0, 'p', "black", "yellow")
             .setPixel(1, 0, 'r', "black", "yellow")

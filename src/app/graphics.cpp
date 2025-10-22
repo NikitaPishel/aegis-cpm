@@ -1,3 +1,4 @@
+#include <ngph/canvas.h>
 #include <ngph/texture.h>
 #include "graphics.h"
 #include "cpm/app.h"
@@ -8,7 +9,8 @@ using namespace gph;
 namespace cpm {
     Graphics::GradColor::GradColor(std::string color, double bottom, double top) : color(color), bottom(bottom), top(top) {}
     
-    Graphics::Graphics() :
+    Graphics::Graphics(Frame* fPtr) :
+    fPtr(fPtr),
     colorTable{
         GradColor("bRed", 1, 1e6),
         GradColor("red", 0.75, 1),
@@ -63,5 +65,30 @@ namespace cpm {
         }
 
         return mapTex.build();
+    }
+
+    void Graphics::renderImage() {
+        // render background
+        canvas.fillWithTexture(texpack.background);
+
+        // render stress map
+        FrameMap stressMap = fPtr->getStressMap();
+        gph::Texture stressTex = texturizeGradientMap(stressMap);
+
+        canvas.addTexture(0, 0, stressTex);
+
+        // render bottom menu
+        canvas.iterateTexture(0, canvas.getYSize()-1, canvas.getXSize(), 1, texpack.botMenu);
+
+        int labelXPos = canvas.getXSize() - texpack.exitLabel.getXSize() - 3;
+        canvas.addTexture(labelXPos, canvas.getYSize()-1, texpack.exitLabel);
+    }
+    
+    void Graphics::handleImage() {
+        bool updated = canvas.updateSize();
+
+        if (updated) {
+            renderImage();
+        }
     }
 }
