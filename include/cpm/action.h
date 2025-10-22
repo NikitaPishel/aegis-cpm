@@ -7,7 +7,7 @@ namespace cpm {
     class ActionStore;
 
     class Action {
-    private:
+    protected:
         // Store pointer
         ActionStore* sPtr;
 
@@ -16,8 +16,8 @@ namespace cpm {
         virtual ~Action() = default;
         
         // virtual methods
-        virtual void apply() = 0; 
-        virtual std::unique_ptr<Action> clone() const = 0; 
+        virtual void run() = 0; 
+        virtual std::unique_ptr<Action> clone() const = 0;
 
         void setStore(ActionStore* iPtr);
     };

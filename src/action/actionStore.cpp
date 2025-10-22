@@ -5,18 +5,35 @@
 #include "cpm/iokey.h"
 
 namespace cpm {
+    ActionStore::ActionStore() : appPtr(nullptr) {}
+    ActionStore::~ActionStore() {}
+    
     // Singleton getter
     ActionStore& ActionStore::getInstance() {
         static ActionStore store;
         return store;
     }
 
+    void ActionStore::linkApp(App& app) {
+        this->appPtr = &app;
+    }
+
+    App& ActionStore::getApp() {
+        if (!appPtr) {
+            throw std::runtime_error("App not linked to ActionStore");
+        }
+        
+        return *appPtr;
+    }
+
     // Actions store i/o
     void ActionStore::setAction(const char& bind, Action* action) {
+        action->setStore(this);
         this->actions[bind] = std::unique_ptr<Action>(action);
     }
 
     void ActionStore::setAction(const char& bind, std::unique_ptr<Action> action) {
+        action->setStore(this);
         this->actions[bind] = std::move(action);
     }
 
@@ -45,7 +62,7 @@ namespace cpm {
     }
 
     void ActionStore::runAction(const char& bind) {
-        this->getAction(bind).apply();
+        this->getAction(bind).run();
     }
 
     void ActionStore::autoRunAction() {
@@ -55,7 +72,7 @@ namespace cpm {
         Action* _action = this->getActionPtr(key);
 
         if (_action != nullptr) {
-            _action->apply();
+            _action->run();
         }
     }
 }

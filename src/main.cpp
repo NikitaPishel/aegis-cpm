@@ -1,23 +1,10 @@
 #include <iostream>
-#include <ngph/canvas.h>
-#include "cpm/iokey.h"
-
-bool appUp = true;
-
-void checkAppStatus() {
-    if (cpm::IoKey::getInstance().getChar() == 'q') {
-        appUp = false;
-    }
-}
+#include "cpm/app.h"
 
 int main() {
-    while (appUp) {
-        checkAppStatus();
+    cpm::App aegis;
 
-        
-
-        cpm::IoKey::getInstance().resetCapture();
-    }
+    aegis.run();
 
     return 0;
 }
