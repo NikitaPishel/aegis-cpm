@@ -1,3 +1,5 @@
+#include <iostream>
+#include <stdexcept>
 #include <ngph/canvas.h>
 #include <ngph/texture.h>
 #include "graphics.h"
@@ -71,13 +73,17 @@ namespace cpm {
         return mapTex.build();
     }
 
-    void Graphics::renderImage() {
+    void Graphics::updateCanvas() {
+        if (!fPtr) {
+            throw std::runtime_error("running updateCanvas() before frame is linked to the graphics handler");
+        }
+        
         // render background
         canvas.fillWithTexture(texpack.background);
 
         // render stress map
-        FrameMap stressMap = fPtr->getStressMap();
-        gph::Texture stressTex = texturizeGradientMap(stressMap);
+        FrameMap bendingMap = fPtr->getBendingMomentMap();
+        gph::Texture stressTex = texturizeGradientMap(bendingMap);
 
         canvas.addTexture(0, 0, stressTex);
 
@@ -92,7 +98,8 @@ namespace cpm {
         bool updated = canvas.updateSize();
 
         if (updated) {
-            renderImage();
+            updateCanvas();
+            canvas.render();
         }
     }
 }

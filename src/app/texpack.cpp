@@ -10,20 +10,20 @@ namespace cpm {
         .setPixel(0, 0, ' ', "black", "yellow")
         .build();
         
-        exitLabel = gph::Texture::Builder(13, 1)
+        exitLabel = gph::Texture::Builder(15, 1)
             .fillTexture(' ', "black", "yellow")
             .setPixel(0, 0, 'p', "black", "yellow")
             .setPixel(1, 0, 'r', "black", "yellow")
             .setPixel(2, 0, 'e', "black", "yellow")
             .setPixel(3, 0, 's', "black", "yellow")
-            .setPixel(3, 0, 's', "black", "yellow")
-            .setPixel(5, 0, 'q', "black", "yellow")
-            .setPixel(7, 0, 't', "black", "yellow")
-            .setPixel(8, 0, 'o', "black", "yellow")
-            .setPixel(9, 0, 'e', "black", "yellow")
-            .setPixel(10, 0, 'x', "black", "yellow")
-            .setPixel(11, 0, 'i', "black", "yellow")
-            .setPixel(12, 0, 't', "black", "yellow")
+            .setPixel(4, 0, 's', "black", "yellow")
+            .setPixel(6, 0, 'q', "black", "yellow")
+            .setPixel(8, 0, 't', "black", "yellow")
+            .setPixel(9, 0, 'o', "black", "yellow")
+            .setPixel(11, 0, 'e', "black", "yellow")
+            .setPixel(12, 0, 'x', "black", "yellow")
+            .setPixel(13, 0, 'i', "black", "yellow")
+            .setPixel(14, 0, 't', "black", "yellow")
             .build();
     }
 }

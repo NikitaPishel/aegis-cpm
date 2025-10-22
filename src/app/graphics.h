@@ -33,7 +33,7 @@ namespace cpm {
         gph::Texture texturizeNormalMap(const FrameMap& map);
         gph::Texture texturizeGradientMap(const FrameMap& map);
 
-        void renderImage();
+        void updateCanvas();
 
     public:
         Graphics();
