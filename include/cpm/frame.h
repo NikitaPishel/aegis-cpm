@@ -13,7 +13,7 @@ namespace cpm {
         std::unique_ptr<Impl> pImpl;
 
     public:
-        Frame(double safetyFactor);
+        Frame();
         ~Frame();
 
         void addJoint(double xPos = 0, double yPos = 0);
@@ -24,6 +24,8 @@ namespace cpm {
             double height = 1,
             Material material = MaterialStore::getInstance().getMaterial("base.iron")
         );
+
+        void setSafetyFactor(double safetyFactor);
         
         FrameMap getPosMap();
         FrameMap getShearMap();

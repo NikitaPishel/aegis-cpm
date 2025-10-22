@@ -32,7 +32,7 @@ namespace cpm {
 
     class Frame::Impl {
     public:
-        Impl(double safetyFactor) : safetyFactor(safetyFactor) {};
+        Impl() {};
         
         // owns all joints and beams
         std::vector<Joint> joints;
@@ -70,7 +70,7 @@ namespace cpm {
         return FrameMap(xSize, ySize);
     }
 
-    Frame::Frame(double safetyFactor) : pImpl(std::make_unique<Impl>(safetyFactor)) {};
+    Frame::Frame() : pImpl(std::make_unique<Impl>()) {};
 
     Frame::~Frame() {}
     
@@ -88,6 +88,10 @@ namespace cpm {
         Joint* originPtr = &pImpl->joints[originIndex];
         
         pImpl->beams.push_back(Beam(originPtr, length, width, height, material));
+    }
+
+    void Frame::setSafetyFactor(double safetyFactor) {
+        pImpl->safetyFactor = safetyFactor;
     }
 
     FrameMap Frame::getPosMap() {

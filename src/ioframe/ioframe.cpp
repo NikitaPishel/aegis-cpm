@@ -25,11 +25,20 @@ namespace cpm {
     }
 
     void JsonFrame::loadFrame(const std::string& path) {
+        if (!framePtr) throw std::runtime_error("Frame not linked before loadFrame()");
+        
+        // read json
         nlohmann::json uformFrame = read(path);
 
-        nlohmann::json joints = uformFrame["joints"];
-        nlohmann::json beams = uformFrame["beams"];
+        // load and add safety factor
+        double safetyFactor = uformFrame.at("safetyFactor").get<double>();
+        framePtr->setSafetyFactor(safetyFactor);
 
+        // get joint and beam arrays
+        nlohmann::json& joints = uformFrame.at("joints");
+        nlohmann::json& beams = uformFrame.at("beams");
+
+        // iterate through joints
         for (int i = 0; i < joints.size(); i++) {
             double xPos = joints[i].at("xPos").get<double>();
             double yPos = joints[i].at("yPos").get<double>();
@@ -37,6 +46,7 @@ namespace cpm {
             framePtr->addJoint(xPos, yPos);
         }
 
+        // iterate through beams
         for (int i = 0; i < beams.size(); i++) {
             int originIndex = beams[i].at("originIndex").get<int>();
             double length = beams[i].at("length").get<double>();

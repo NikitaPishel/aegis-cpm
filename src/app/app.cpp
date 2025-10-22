@@ -3,18 +3,28 @@
 #include "cpm/bActions/quit.h"
 #include "cpm/iokey.h"
 #include "cpm/frame.h"
+#include "cpm/ioframe.h"
 #include "graphics.h"
 
 namespace cpm {
     class App::Impl {
     public:
-        Impl() : frame(1.2) {}
+        Impl() : frame() {}
+
+        void loadFrame(const std::string& path);
     
         bool status = true;
 
         Frame frame;
         Graphics gHandler;
     };
+
+    void App::Impl::loadFrame(const std::string& path) {
+        JsonFrame loader;
+
+        loader.linkFrame(this->frame);
+        loader.loadFrame(path);
+    }
     
     void App::shutdown() {
         this->pImpl->status = false;
@@ -30,6 +40,9 @@ namespace cpm {
         
         // load actions store
         ActionStore& actions = ActionStore::getInstance();
+
+        // load frame
+        pImpl->loadFrame("./data/conf/.test.json");
 
         // link pointers between modules
         actions.linkApp(*this);
