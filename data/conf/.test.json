@@ -1,0 +1,36 @@
+{
+    "safetyFactor": 1.2,
+
+    "joints": [
+        {
+            "xPos": 0.0,
+            "yPos": 0.0
+        },
+        {
+            "xPos": 2.0,
+            "yPos": 0.0
+        }
+    ],
+
+    "beams": [
+        {
+            "originIndex": 0,
+
+            "length": 5.5,
+            "width": 0.5,
+            "height": 0.5,
+
+            "material": "base.steel.S235"
+        },
+
+        {
+            "originIndex": 1,
+
+            "length": 5.5,
+            "width": 0.5,
+            "height": 0.5,
+
+            "material": "base.steel.S235"
+        }
+    ]
+}
