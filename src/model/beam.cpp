@@ -27,7 +27,7 @@ namespace cpm {
         }
 
         double Beam::getShearForce(double pos, double force) {
-            return (force/2) - (force * pos);
+            return (force/2) - ((force * pos) / 2);
         }
 
         double Beam::getBendingMoment(double pos, double force) {
@@ -38,7 +38,7 @@ namespace cpm {
             
             double totalForce = this->getShearForce(pos, this->weight);
             
-            for (int i; i < this->distributed.size(); i++) {
+            for (int i = 0; i < this->distributed.size(); i++) {
                 totalForce += this->getShearForce(pos, this->distributed[i]);
             }
 
@@ -49,8 +49,8 @@ namespace cpm {
             
             double totalMoment = this->getBendingMoment(pos, this->weight);
 
-            for (int i; i < this->distributed.size(); i++) {
-                totalMoment += this->distributed[i];
+            for (int i = 0; i < this->distributed.size(); i++) {
+                totalMoment += this->getBendingMoment(pos, this->distributed[i]);
             }
 
             return totalMoment;

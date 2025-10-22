@@ -2,6 +2,7 @@
 #include <vector>
 #include <stdexcept>
 #include <cmath>
+#include <iostream>
 #include "cpm/frame.h"
 #include "cpm/frameMap.h"
 #include "beam.h"
@@ -16,7 +17,7 @@ namespace cpm {
         int xSize;
         int ySize;
 
-        BeamBuilder(Beam beam) {
+        BeamBuilder(const Beam& beam) {
             // flip orientation to make map horizontal
             xStart = std::floor(beam.originPtr->yPos * 2.0);
             yStart = std::floor(beam.originPtr->xPos);
@@ -100,8 +101,8 @@ namespace cpm {
         for (int i = 0; i < pImpl->beams.size(); i++) {
             BeamBuilder builder(pImpl->beams[i]);
 
-            for (int yShift = 0; yShift < builder.xSize; yShift++) {
-                for (int xShift = 0; xShift < builder.ySize; xShift++) {
+            for (int yShift = 0; yShift < builder.ySize; yShift++) {
+                for (int xShift = 0; xShift < builder.xSize; xShift++) {
                     int xPos = builder.xStart + xShift;
                     int yPos = builder.yStart + yShift;
                     
@@ -121,15 +122,13 @@ namespace cpm {
         for (int i = 0; i < pImpl->beams.size(); i++) {
             BeamBuilder builder(pImpl->beams[i]);
 
-            for (int yShift = 0; yShift < builder.xSize; yShift++) {
-                for (int xShift = 0; xShift < builder.ySize; xShift++) {
+            for (int yShift = 0; yShift < builder.ySize; yShift++) {
+                for (int xShift = 0; xShift < builder.xSize; xShift++) {
                     int xPos = builder.xStart + xShift;
                     int yPos = builder.yStart + yShift;
                     
-                    if (xPos >= 0 && xPos < posMap.getXSize() && yPos >= 0 && yPos < posMap.getYSize()) {
-                        double physPos = yShift / 2;
-                        posMap.setValue(xPos, yPos, pImpl->beams[i].getTotalShearForce(physPos));
-                    }
+                    double physPos = xShift / 2;
+                    posMap.setValue(xPos, yPos, pImpl->beams[i].getTotalShearForce(physPos));
                 }
             }
         }
@@ -143,15 +142,13 @@ namespace cpm {
         for (int i = 0; i < pImpl->beams.size(); i++) {
             BeamBuilder builder(pImpl->beams[i]);
 
-            for (int yShift = 0; yShift < builder.xSize; yShift++) {
-                for (int xShift = 0; xShift < builder.ySize; xShift++) {
+            for (int yShift = 0; yShift < builder.ySize; yShift++) {
+                for (int xShift = 0; xShift < builder.xSize; xShift++) {
                     int xPos = builder.xStart + xShift;
                     int yPos = builder.yStart + yShift;
                     
-                    if (xPos >= 0 && xPos < posMap.getXSize() && yPos >= 0 && yPos < posMap.getYSize()) {
-                        double physPos = yShift / 2;
-                        posMap.setValue(xPos, yPos, pImpl->beams[i].getTotalBendingMoment(physPos));
-                    }
+                    double physPos = xShift / 2.0;
+                    posMap.setValue(xPos, yPos, pImpl->beams[i].getTotalBendingMoment(physPos));
                 }
             }
         }
@@ -165,15 +162,13 @@ namespace cpm {
         for (int i = 0; i < pImpl->beams.size(); i++) {
             BeamBuilder builder(pImpl->beams[i]);
 
-            for (int yShift = 0; yShift < builder.xSize; yShift++) {
-                for (int xShift = 0; xShift < builder.ySize; xShift++) {
+            for (int yShift = 0; yShift < builder.ySize; yShift++) {
+                for (int xShift = 0; xShift < builder.xSize; xShift++) {
                     int xPos = builder.xStart + xShift;
                     int yPos = builder.yStart + yShift;
                     
-                    if (xPos >= 0 && xPos < posMap.getXSize() && yPos >= 0 && yPos < posMap.getYSize()) {
-                        double physPos = yShift / 2;
-                        posMap.setValue(xPos, yPos, pImpl->beams[i].getTotalStressPercentage(physPos));
-                    }
+                    double physPos = yShift / 2.0;
+                    posMap.setValue(xPos, yPos, pImpl->beams[i].getTotalStressPercentage(physPos));
                 }
             }
         }

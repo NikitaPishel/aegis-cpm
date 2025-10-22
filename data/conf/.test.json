@@ -7,7 +7,7 @@
             "yPos": 0.0
         },
         {
-            "xPos": 2.0,
+            "xPos": 8.0,
             "yPos": 0.0
         }
     ],
@@ -16,9 +16,9 @@
         {
             "originIndex": 0,
 
-            "length": 5.5,
-            "width": 0.5,
-            "height": 0.5,
+            "length": 40,
+            "width": 1,
+            "height": 1,
 
             "material": "base.steel.S235"
         },
@@ -26,9 +26,9 @@
         {
             "originIndex": 1,
 
-            "length": 5.5,
-            "width": 0.5,
-            "height": 0.5,
+            "length": 40,
+            "width": 1,
+            "height": 1,
 
             "material": "base.steel.S235"
         }
