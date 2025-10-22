@@ -28,7 +28,7 @@ namespace cpm {
         FrameMap getPosMap();
         FrameMap getShearMap();
         FrameMap getBendingMomentMap();
-        FrameMap getLoadMap();
+        FrameMap getStressMap();
     };
 }
 

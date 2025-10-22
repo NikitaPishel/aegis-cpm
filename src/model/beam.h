@@ -53,8 +53,8 @@ namespace cpm {
 
         double getTotalShearForce(double pos);
         double getTotalBendingMoment(double pos);
-        double getTotalLoad(double pos);
-        double getTotalLoadPercentage(double pos);
+        double getTotalStress(double pos);
+        double getTotalStressPercentage(double pos);
     };
 }
 

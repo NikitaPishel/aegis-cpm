@@ -56,14 +56,14 @@ namespace cpm {
             return totalMoment;
         }
 
-        double Beam::getTotalLoad(double pos) {
+        double Beam::getTotalStress(double pos) {
             double totalShear = this->getTotalShearForce(pos);
             double totalMoment = this->getTotalBendingMoment(pos);
             
             return 0.0;
         }
 
-        double Beam::getTotalLoadPercentage(double pos) {
-            return getTotalLoad(pos) / stressAllowed;
+        double Beam::getTotalStressPercentage(double pos) {
+            return getTotalStress(pos) / stressAllowed;
         }
 }

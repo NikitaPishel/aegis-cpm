@@ -155,7 +155,7 @@ namespace cpm {
         return posMap;
     }
 
-    FrameMap Frame::getLoadMap() {
+    FrameMap Frame::getStressMap() {
         FrameMap posMap = pImpl->getEmptyMap();
 
         for (int i = 0; i < pImpl->beams.size(); i++) {
@@ -168,7 +168,7 @@ namespace cpm {
                     
                     if (xPos >= 0 && xPos < posMap.getXSize() && yPos >= 0 && yPos < posMap.getYSize()) {
                         double physPos = yShift / 2;
-                        posMap.setValue(xPos, yPos, pImpl->beams[i].getTotalLoadPercentage(physPos));
+                        posMap.setValue(xPos, yPos, pImpl->beams[i].getTotalStressPercentage(physPos));
                     }
                 }
             }
