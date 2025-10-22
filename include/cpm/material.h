@@ -1,5 +1,5 @@
-#ifndef ACTIONS_MAIN_H
-#define ACTIONS_MAIN_H
+#ifndef MATERIAL_HOLDER_H
+#define MATERIAL_HOLDER_H
 
 #include <memory>
 
