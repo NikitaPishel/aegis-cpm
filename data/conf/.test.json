@@ -1,5 +1,5 @@
 {
-    "safetyFactor": 1.2,
+    "safetyFactor": 2.0,
 
     "joints": [
         {
