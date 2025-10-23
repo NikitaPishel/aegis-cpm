@@ -11,6 +11,7 @@ This document summarizes the key formulas used for calculating shear, bending, a
 $$
 A = bh
 $$
+
 **Notes:**  
 - $b$ = width  
 - $h$ = height  
@@ -26,7 +27,8 @@ $$
 
 ### **Total Force from Self-Weight**
 $$
-F = \rho A L$$
+F = \rho A L
+$$
 
 **Notes:**  
 - Represents resultant of uniformly distributed load from beam self-weight.
@@ -35,6 +37,7 @@ F = \rho A L$$
 $$
 \sigma_{\text{allow}} = \dfrac{\sigma_y}{SF}
 $$
+
 **Notes:**  
 - Based on material yield strength $\sigma_y$ and chosen safety factor \(SF\).
 
@@ -46,6 +49,7 @@ $$
 $$
 V(x) = \dfrac{F}{2} - \dfrac{Fx}{L}
 $$
+
 **Notes:**  
 - Assumes uniform load and symmetric support reactions.
 
@@ -53,6 +57,7 @@ $$
 $$
 M(x) = \dfrac{F x}{2} - \dfrac{F x^2}{2L} - \dfrac{FL}{12}
 $$
+
 **Notes:**  
 - Includes end fixity correction: $\dfrac{FL}{12}$.
 
@@ -64,6 +69,7 @@ $$
 $$
 Q(y) = \dfrac{b}{2}\left[\left(\dfrac{h}{2}\right)^2 - y^2\right]
 $$
+
 **Notes:**  
 - Valid for $y \le \dfrac{h}{2}$.  
 
@@ -71,6 +77,7 @@ $$
 $$
 \tau(y) = \dfrac{V(x) \cdot Q(y)}{I \cdot b}
 $$
+
 **Notes:**  
 - Maximum at neutral axis $(y = 0)$.
 
@@ -89,6 +96,7 @@ $$
 $$
 \sigma_{eq} = \sqrt{\sigma^2 + 3\tau^2}
 $$
+
 **Notes:**  
 - Used for ductile material failure analysis.
 
@@ -96,6 +104,7 @@ $$
 $$
 \sigma_{\text{max}} = \max\left[\,\sigma_{eq}(y)\,\right]
 $$
+
 **Notes:**  
 - Evaluated by scanning from $y = 0$ to $y = \dfrac{h}{2}$.
 
@@ -103,6 +112,7 @@ $$
 $$
 U = \dfrac{\sigma_{\text{max}}}{\sigma_{\text{allow}}}
 $$
+
 **Notes:**  
 - $U < 1 \Rightarrow$ safe; $U > 1 \Rightarrow$ failure risk.
 
