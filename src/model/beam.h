@@ -13,8 +13,15 @@ namespace cpm {
     private:
         double getDistributedLoads();
 
-        double getShearForce(double pos, double force);
-        double getBendingMoment(double pos, double force);
+        double getShearForce(double xPos, double force);
+        double getBendingMoment(double xPos, double force);
+
+        double getShearStress(double yPos, double shearForce);
+        double getBendingStress(double yPos, double bendingMoment);
+
+        double getEqStress(double yPos, double shearForce, double bendingMoment);
+
+        double getFirstMomentArea(double yPos);
 
     public:
         // length of the beam
@@ -24,8 +31,8 @@ namespace cpm {
         double width;
         double height;
 
+        // areas
         double cSectnArea;
-        double fMomntArea;
         double sMomntArea;
 
         // Vertical forces
@@ -51,10 +58,12 @@ namespace cpm {
             double safetyFactor = 1
         );
 
-        double getTotalShearForce(double pos);
-        double getTotalBendingMoment(double pos);
-        double getTotalStress(double pos);
-        double getTotalStressPercentage(double pos);
+        double getTotalShearForce(double xPos);
+        double getTotalBendingMoment(double xPos);
+
+        // find a point where equivalent stress is maximum
+        double getTotalStress(double xPos);
+        double getTotalStressPercentage(double xPos);
     };
 }
 
