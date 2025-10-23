@@ -9,6 +9,7 @@ namespace cpm {
         gph::Texture exitLabel;
         gph::Texture botMenu;
         gph::Texture background;
+        gph::Texture stressLabel;
 
         TexPack();
     };

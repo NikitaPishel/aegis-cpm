@@ -99,13 +99,19 @@ namespace cpm {
         FrameMap stressMap = fPtr->getStressMap();
         gph::Texture stressTex = texturizeGradientMapByMagnitude(stressMap);
 
-        canvas.addTexture(0, 0, stressTex);
+        // find positions for stress map texture (it will be centred, with accounting for bottom menu)
+        int stressTexXPos = (canvas.getXSize() - stressTex.getXSize()) / 2;
+        int stressTexYPos = (canvas.getYSize() - 1 - stressTex.getYSize()) / 2;
+
+        canvas.addTexture(stressTexXPos, stressTexYPos, stressTex);
 
         // render bottom menu
         canvas.iterateTexture(0, canvas.getYSize()-1, canvas.getXSize(), 1, texpack.botMenu);
 
         int labelXPos = canvas.getXSize() - texpack.exitLabel.getXSize() - 3;
         canvas.addTexture(labelXPos, canvas.getYSize()-1, texpack.exitLabel);
+        
+        canvas.addTexture(3, canvas.getYSize()-1, texpack.stressLabel);
     }
     
     void Graphics::handleImage() {

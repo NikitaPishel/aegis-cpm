@@ -25,5 +25,27 @@ namespace cpm {
             .setPixel(13, 0, 'i', "black", "yellow")
             .setPixel(14, 0, 't', "black", "yellow")
             .build();
+        
+        stressLabel = gph::Texture::Builder(18, 1)
+            .fillTexture(' ', "white", "yellow")
+            .setPixel(0, 0, 'C', "bWhite", "bRed")
+            .setPixel(1, 0, 'P', "bWhite", "bRed")
+            .setPixel(2, 0, '+', "bWhite", "red")
+            .setPixel(3, 0, ' ', "bWhite", "red")
+            .setPixel(4, 0, ' ', "bWhite", "bYellow")
+            .setPixel(5, 0, ' ', "bWhite", "bYellow")
+            .setPixel(6, 0, ' ', "bWhite", "yellow")
+            .setPixel(7, 0, ' ', "bWhite", "yellow")
+            .setPixel(8, 0, 'N', "black", "white")
+            .setPixel(9, 0, 'E', "black", "white")
+            .setPixel(10, 0, ' ', "bWhite", "cyan")
+            .setPixel(11, 0, ' ', "bWhite", "cyan")
+            .setPixel(12, 0, ' ', "bWhite", "bCyan")
+            .setPixel(13, 0, ' ', "bWhite", "bCyan")
+            .setPixel(14, 0, ' ', "bWhite", "blue")
+            .setPixel(15, 0, '-', "bWhite", "blue")
+            .setPixel(16, 0, 'C', "bWhite", "bBlue")
+            .setPixel(17, 0, 'P', "bWhite", "bBlue")
+            .build();
     }
 }
