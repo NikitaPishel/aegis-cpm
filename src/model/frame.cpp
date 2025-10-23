@@ -2,7 +2,6 @@
 #include <vector>
 #include <stdexcept>
 #include <cmath>
-#include <iostream>
 #include "cpm/frame.h"
 #include "cpm/frameMap.h"
 #include "beam.h"
@@ -88,7 +87,7 @@ namespace cpm {
     ) {
         Joint* originPtr = &pImpl->joints[originIndex];
         
-        pImpl->beams.push_back(Beam(originPtr, length, width, height, material));
+        pImpl->beams.push_back(Beam(originPtr, length, width, height, material, pImpl->safetyFactor));
     }
 
     void Frame::setSafetyFactor(double safetyFactor) {
@@ -167,7 +166,7 @@ namespace cpm {
                     int xPos = builder.xStart + xShift;
                     int yPos = builder.yStart + yShift;
                     
-                    double physPos = yShift / 2.0;
+                    double physPos = xShift / 2.0;
                     posMap.setValue(xPos, yPos, pImpl->beams[i].getTotalStressPercentage(physPos));
                 }
             }

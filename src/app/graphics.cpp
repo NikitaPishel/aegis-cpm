@@ -96,7 +96,7 @@ namespace cpm {
         canvas.fillWithTexture(texpack.background);
 
         // render stress map
-        FrameMap stressMap = fPtr->getBendingMomentMap();
+        FrameMap stressMap = fPtr->getStressMap();
         gph::Texture stressTex = texturizeGradientMapByMagnitude(stressMap);
 
         canvas.addTexture(0, 0, stressTex);

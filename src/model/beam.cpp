@@ -28,7 +28,7 @@ namespace cpm {
         }
 
         double Beam::getShearForce(double xPos, double force) {
-            return (force/2) - ((force * xPos) / 2);
+            return (force/2) - ((force * xPos) / length);
         }
 
         double Beam::getBendingMoment(double xPos, double force) {
