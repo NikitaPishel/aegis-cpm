@@ -31,7 +31,8 @@ namespace cpm {
         std::string getColorByGradient(double gradient);
 
         gph::Texture texturizeNormalMap(const FrameMap& map);
-        gph::Texture texturizeGradientMap(const FrameMap& map);
+        gph::Texture texturizeGradientMapByValue(const FrameMap& map);
+        gph::Texture texturizeGradientMapByMagnitude(const FrameMap& map);
 
         void updateCanvas();
 

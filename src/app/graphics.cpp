@@ -58,13 +58,27 @@ namespace cpm {
         return mapTex.build();
     }
 
-    Texture Graphics::texturizeGradientMap(const FrameMap& map) {
+    Texture Graphics::texturizeGradientMapByValue(const FrameMap& map) {
         Texture::Builder mapTex(map.getXSize(), map.getYSize());
 
         for (int yPos = 0; yPos < map.getYSize(); yPos++) {
             for (int xPos = 0; xPos < map.getXSize(); xPos++) {
                 double value = map.getValue(xPos, yPos);
                 double gradient = value / map.getMaxMagnitude();
+
+                mapTex.setPixel(xPos, yPos, ' ', "white", getColorByGradient(gradient));
+            }
+        }
+
+        return mapTex.build();
+    }
+    
+    Texture Graphics::texturizeGradientMapByMagnitude(const FrameMap& map) {
+        Texture::Builder mapTex(map.getXSize(), map.getYSize());
+
+        for (int yPos = 0; yPos < map.getYSize(); yPos++) {
+            for (int xPos = 0; xPos < map.getXSize(); xPos++) {
+                double gradient = map.getValue(xPos, yPos);
 
                 mapTex.setPixel(xPos, yPos, ' ', "white", getColorByGradient(gradient));
             }
@@ -82,8 +96,8 @@ namespace cpm {
         canvas.fillWithTexture(texpack.background);
 
         // render stress map
-        FrameMap bendingMap = fPtr->getBendingMomentMap();
-        gph::Texture stressTex = texturizeGradientMap(bendingMap);
+        FrameMap stressMap = fPtr->getBendingMomentMap();
+        gph::Texture stressTex = texturizeGradientMapByMagnitude(stressMap);
 
         canvas.addTexture(0, 0, stressTex);
 
