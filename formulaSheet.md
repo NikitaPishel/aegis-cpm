@@ -12,8 +12,8 @@ $$
 A = bh
 $$
 **Notes:**  
-- \( b \) = width  
-- \( h \) = height  
+- $b$ = width  
+- $h$ = height  
 
 ### **Second Moment of Area (Rectangle about Neutral Axis)**
 $$
@@ -72,12 +72,12 @@ $$
 \tau(y) = \dfrac{V(x) \cdot Q(y)}{I \cdot b}
 $$
 **Notes:**  
-- Maximum at neutral axis \((y = 0)\).
+- Maximum at neutral axis $(y = 0)$.
 
 ### **Bending Stress at Height \( y \)**
-\[
+$$
 \sigma(y) = \dfrac{M(x) \cdot y}{I}
-\]
+$$
 **Notes:**  
 - Varies linearly from neutral axis; max at $y = \pm \dfrac{h}{2}$.
 
@@ -97,7 +97,7 @@ $$
 \sigma_{\text{max}} = \max\left[\,\sigma_{eq}(y)\,\right]
 $$
 **Notes:**  
-- Evaluated by scanning from \( y = 0 \) to \( y = \dfrac{h}{2} \).
+- Evaluated by scanning from $y = 0$ to $y = \dfrac{h}{2}$.
 
 ### **Stress Utilization Ratio**
 $$
