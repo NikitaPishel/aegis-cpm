@@ -22,7 +22,7 @@ namespace cpm {
             sMomntArea = (width * pow(height, 3)) / 12;
 
             // find weight of a beam
-            weight = material.density * cSectnArea * length;
+            weight = material.density * cSectnArea * length * 9.80665;
 
             stressAllowed = material.yieldStrength / safetyFactor;
         }
