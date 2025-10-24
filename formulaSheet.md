@@ -4,6 +4,21 @@
 This document summarizes the key formulas used for calculating shear, bending, and combined stresses in a fixed–fixed rectangular beam under uniform self-weight. Each section includes the formula, its purpose, and important usage notes.
 
 ---
+## Navigation
+> [Cross Section Geometry](#1-cross-section-geometry)
+
+> [Load and Force definitions](#2-load-and-force-definitions)
+
+> [Internal shear and bending moment](#3-internal-shear-and-bending-effects-fixedfixed-beam)
+
+> [Stress distribution](#4-stress-distribution-along-cross-section-at-given-)
+
+> [Stress evaluation](#5-combined-and-maximum-stress-evaluation)
+
+> [Combined Distributed force](#6-superposition-if-multiple-loads-exist)
+
+> [Formula table](#7-formula-summary-table)
+---
 
 ## 1. Cross-Section Geometry
 
@@ -132,5 +147,24 @@ $$
 
 **Notes:**  
 - Applies principle of superposition for multiple loads or effects.
+
+---
+
+## 7. Formula Summary Table
+
+| Purpose | Formula |
+|---------|---------|
+| Cross-sectional area | $$A = bh$$ |
+| Second moment of area | $$I = \dfrac{b h^3}{12}$$ |
+| Total force from self-weight | $$F = \rho A L g$$ |
+| Allowable stress | $$\sigma_{\text{allow}} = \dfrac{\sigma_y}{SF}$$ |
+| Shear force | $$V(x) = \dfrac{F}{2} - \dfrac{F x}{L}$$ |
+| Bending moment | $$M(x) = \dfrac{F x}{2} - \dfrac{F x^2}{2L} - \dfrac{FL}{12}$$ |
+| First moment of area | $$Q(y) = \dfrac{b}{2}\left[\left(\dfrac{h}{2}\right)^2 - y^2\right]$$ |
+| Shear stress | $$\tau(y) = \dfrac{V(x) \cdot Q(y)}{I \cdot b}$$ |
+| Bending stress | $$\sigma(y) = \dfrac{M(x) \cdot y}{I}$$ |
+| Equivalent stress | $$\sigma_{eq} = \sqrt{\sigma^2 + 3\tau^2}$$ |
+| Maximum stress | $$\sigma_{\text{max}} = \max\left[\sigma_{eq}(y)\right]$$ |
+| Utilization ratio | $$U = \dfrac{\sigma_{\text{max}}}{\sigma_{\text{allow}}}$$ |
 
 ---
