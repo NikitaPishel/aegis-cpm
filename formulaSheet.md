@@ -11,7 +11,7 @@ This document summarizes the key formulas used for calculating shear, bending, a
 
 > [Internal shear and bending moment](#3-internal-shear-and-bending-effects-fixedfixed-beam)
 
-> [Stress distribution](#4-stress-distribution-along-cross-section-at-given-)
+> [Stress distribution](#4-stress-distribution-along-cross-section)
 
 > [Stress evaluation](#5-combined-and-maximum-stress-evaluation)
 
@@ -40,15 +40,40 @@ $$
 
 ## 2. Load and Force Definitions
 
-### **Total Force from Self-Weight**
+### **Weight of a beam**
 $$
-F = \rho A L
+F = \rho A L g
 $$
 
 **Notes:**  
 - Represents resultant of uniformly distributed load from beam self-weight.
+- Produces uniform force along the beam
 
-### **Allowable Stress**
+### **Platform weight distribution across multiple beams**
+$$
+w_i = e^{-k \left| x_i - x_{cg} \right|}
+$$
+
+$$
+F_i = F \, \frac{w_i}{W}
+$$
+
+$$
+\sum_i \frac{w_i}{W} = 1
+$$
+
+$$
+W = \sum_i w_i
+$$
+
+**Notes:**
+- Used to find force acting on a beam from a platform above
+- In above formulas, $F$ is a total weight of a platform
+- As $\frac{w_i}{W}$ is a factor acting on a beam $i$, weight acting on beam is $F_i$
+- Assumes platform has the same length as beams supporting it
+- Beams that hold the platform are considered to be perpendicular
+
+### **Allowed Stress**
 $$
 \sigma_{\text{allow}} = \dfrac{\sigma_y}{SF}
 $$
@@ -58,7 +83,7 @@ $$
 
 ---
 
-## 3. Internal Shear and Bending Effects (Fixed–Fixed Beam)
+## 3. Internal Shear and Bending Moment
 
 ### **Shear Force at Position $x$**
 $$
@@ -66,7 +91,8 @@ V(x) = \dfrac{F}{2} - \dfrac{Fx}{L}
 $$
 
 **Notes:**  
-- Assumes uniform load and symmetric support reactions.
+- Searches for Fixed-Fixed connection loads.
+- Assumes there's uniform load over the whole beam.
 
 ### **Bending Moment at Position \( x \)**
 $$
@@ -78,7 +104,7 @@ $$
 
 ---
 
-## 4. Stress Distribution Along Cross-Section (at Given $x$)
+## 4. Stress Distribution Along Cross-Section
 
 ### **First Moment of Area at Height \( y \)**
 $$
@@ -100,6 +126,7 @@ $$
 $$
 \sigma(y) = \dfrac{M(x) \cdot y}{I}
 $$
+
 **Notes:**  
 - Varies linearly from neutral axis; max at $y = \pm \dfrac{h}{2}$.
 
@@ -113,7 +140,7 @@ $$
 $$
 
 **Notes:**  
-- Used for ductile material failure analysis.
+- Represents total stress at a certain point of a beam
 
 ### **Maximum Stress in Section**
 $$
@@ -156,7 +183,9 @@ $$
 |---------|---------|
 | Cross-sectional area | $$A = bh$$ |
 | Second moment of area | $$I = \dfrac{b h^3}{12}$$ |
-| Total force from self-weight | $$F = \rho A L g$$ |
+| Weight of a beam | $$F = \rho A L g$$ |
+| support distribured force | $$w_i = e^{-k \left\| x_i - x_{cg} \right\|}$$ |
+| support force | $$F_i = F \frac{w_i}{W}$$ |
 | Allowable stress | $$\sigma_{\text{allow}} = \dfrac{\sigma_y}{SF}$$ |
 | Shear force | $$V(x) = \dfrac{F}{2} - \dfrac{F x}{L}$$ |
 | Bending moment | $$M(x) = \dfrac{F x}{2} - \dfrac{F x^2}{2L} - \dfrac{FL}{12}$$ |
