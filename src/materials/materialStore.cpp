@@ -19,7 +19,7 @@ namespace cpm {
         auto it = this->materials.find(name);
 
         if (it == this->materials.end()) {
-            throw std::runtime_error("Tool not found: " + name);
+            throw std::runtime_error("Material not found: " + name);
         }
 
         return it->second;
