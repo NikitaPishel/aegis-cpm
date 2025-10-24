@@ -9,7 +9,7 @@ This document summarizes the key formulas used for calculating shear, bending, a
 
 > [Load and Force definitions](#2-load-and-force-definitions)
 
-> [Internal shear and bending moment](#3-internal-shear-and-bending-effects-fixedfixed-beam)
+> [Internal shear and bending moment](#3-internal-shear-and-bending-moment)
 
 > [Stress distribution](#4-stress-distribution-along-cross-section)
 
