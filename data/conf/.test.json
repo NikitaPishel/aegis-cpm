@@ -7,7 +7,11 @@
             "yPos": 0.0
         },
         {
-            "xPos": 8.0,
+            "xPos": 6.0,
+            "yPos": 0.0
+        },
+        {
+            "xPos": 12.0,
             "yPos": 0.0
         }
     ],
@@ -16,17 +20,27 @@
         {
             "originIndex": 0,
 
-            "length": 40,
+            "length": 50,
             "width": 1,
             "height": 1,
 
-            "material": "base.steel.S235"
+            "material": "base.wood.oak"
         },
 
         {
             "originIndex": 1,
 
-            "length": 40,
+            "length": 50,
+            "width": 1,
+            "height": 1,
+
+            "material": "base.alluminum.6061"
+        },
+
+        {
+            "originIndex": 2,
+
+            "length": 50,
             "width": 1,
             "height": 1,
 
