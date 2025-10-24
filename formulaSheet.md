@@ -55,7 +55,7 @@ w_i = e^{-k \left| x_i - x_{cg} \right|}
 $$
 
 $$
-F_i = F \, \frac{w_i}{W}
+F_i = F  \frac{w_i}{W}
 $$
 
 $$
@@ -144,7 +144,7 @@ $$
 
 ### **Maximum Stress in Section**
 $$
-\sigma_{\text{max}} = \max\left[\,\sigma_{eq}(y)\,\right]
+\sigma_{\text{max}} = \max\left[\sigma_{eq}(y)\right]
 $$
 
 **Notes:**  
