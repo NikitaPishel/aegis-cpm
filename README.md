@@ -46,7 +46,7 @@ This project helps to calculate stress in bridges
 
 4. **Done! Now you can launch it like this:**
     ```bash
-    nsketch
+    ./build/aegis-cpm
     ```
 
 
