@@ -1,5 +1,11 @@
 # Aegis CPM 
-[]()
+> [Introduction](#introduction)
+
+> [Installation](#installation)
+
+> [User Manual](#user-manual)
+
+> [Contribution](#contribution)
 
 ---
 
@@ -19,6 +25,30 @@ This project helps to calculate stress in bridges
 ---
 
 ## Installation
+### For ubuntu/debian:
+1.  **Install Git (if necessary):**
+    ```bash
+    sudo apt update
+    sudo apt install git
+    ```
+
+2.  **Clone the Repository:**
+    ```bash
+    git clone https://github.com/NikitaPishel/aegis-cpm
+    cd aegis-cpm
+    ```
+
+3.  **Run the Installation Script:**
+    ```bash
+    chmod +x ./devBuild.sh
+    ./devBuild.sh -DAEGIS_BUILD_TESTS=OFF
+    ```
+
+4. **Done! Now you can launch it like this:**
+    ```bash
+    nsketch
+    ```
+
 
 ---
 
@@ -121,5 +151,5 @@ To add a beam to the structure you will use:
 
 ---
 
-## **Contribution**
+## Contribution
 **This is a showcase project.** Any contribution won't be accepted or done to this project consistently. Even though, I suggest you create forks of this app or use any parts of its code for your own needs.
