@@ -7,6 +7,10 @@
 
 > [Contribution](#contribution)
 
+> [License](./LICENSE.md)
+
+> [Fomula Sheet](./formulaSheet.md)
+
 ---
 
 ## Introduction 
