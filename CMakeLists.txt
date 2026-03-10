@@ -13,7 +13,7 @@ include(FetchContent)
 FetchContent_Declare(
     ngph
     GIT_REPOSITORY https://github.com/NikitaPishel/nano-gph
-    GIT_TAG master
+    GIT_TAG v1.1
 )
 
 FetchContent_MakeAvailable(ngph)
